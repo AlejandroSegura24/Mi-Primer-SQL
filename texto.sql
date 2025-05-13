@@ -22,8 +22,30 @@ CREATE TABLE if not exists bills (
     total float,
     status enum('open', 'paid', 'lost') not null default 'open',
     created_at timestamp not null default current_timestamp,
-    update_at timestamp not null default current_timestamp on update current_timestamp,
-    foreign key (client_id) references clients(client_id)
+    update_at timestamp not null default current_timestamp on update current_timestamp
 );
 
-instert into bills(client_id, total) value(10, 15.00);
+CREATE TABLE IF NOT EXISTS bill_products (
+    bill_products_id integer unsigned primary key auto_increment,
+    bill_id integer unsigned not null,
+    product_id integer unsigned not null,
+    quantity integer not null default 1,
+    created_at timestamp not null default current_timestamp,
+    update_at timestamp not null default current_timestamp on update current_timestamp
+); 
+
+INSERT INTO clients(client_id, name, email) values(10, 'Eduardo', 'eduardo@mail.com');
+INSERT INTO products(name, slug) values('cuaderno', 'slug-cuaderno');
+INSERT INTO bills(client_id, total) values(10, 15.00);
+INSERT INTO bill_products(product_id, bill_id) values(1, 1);
+
+CREATE TABLE test (
+    test_id integer unsigned primary key auto_increment,
+    name varchar(100) not null,
+    qty integer,
+    created_at timestamp not null default current_timestamp
+);
+
+ALTER TABLE test add column price float;
+ALTER TABLE test drop column price;
+
