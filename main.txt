@@ -9,3 +9,9 @@
 INSERT INTO products(name, slug) values('pluma azul', 'pluma-azul');
 ON DUPLICATE KEY UPDATE description = price;
 INSERT INTO products(name, slug) values('pluma roja', 'pluma-roja');
+
+alter table products add column price decimal(10,2) after slug;
+
+SELECT nombre_fila
+FROM nombre_tabla
+WHERE nombre_fila 

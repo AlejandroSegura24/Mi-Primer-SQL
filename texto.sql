@@ -7,14 +7,25 @@ CREATE TABLE if not exists clients (
     update_at timestamp not null default current_timestamp on update current_timestamp
 );
 
+-- CREATE TABLE if not exists products (
+--     product_id integer unsigned primary key auto_increment,
+--     name varchar(100) not null,
+--     slug varchar (200) not null unique,
+--     description text,
+--     created_at timestamp not null default current_timestamp,
+--     update_at timestamp not null default current_timestamp on update current_timestamp
+-- );
+
 CREATE TABLE if not exists products (
     product_id integer unsigned primary key auto_increment,
-    name varchar(100) not null,
-    slug varchar (200) not null unique,
+    sku varchar(20) not null unique,
+    name varchar(50) not null,
+    slug varchar(50) not null unique,
     description text,
     created_at timestamp not null default current_timestamp,
     update_at timestamp not null default current_timestamp on update current_timestamp
 );
+alter table products add column price decimal(10,2) after slug;
 
 CREATE TABLE if not exists bills (
     bill_id integer unsigned primary key auto_increment,
