@@ -15,3 +15,5 @@ alter table products add column price decimal(10,2) after slug;
 SELECT nombre_fila
 FROM nombre_tabla
 WHERE nombre_fila 
+
+select email, if(email like '%@gmail.com', 1, 0) as gmail, if(email like '%@hotmail.com', 1, 0) as hotmail from clients order by rand() limit 30;
